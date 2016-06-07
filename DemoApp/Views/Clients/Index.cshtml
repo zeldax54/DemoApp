@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DemoApp.Models.Client>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+   <button class="newitem" id="/Clients/Create">New Client</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                <button class="btn-success newitem" id="/Clients/Edit/@item.id">Edit</button>
+                <button class="newitem" id="/Clients/Details/@item.id">Details</button>
+                <button class="newitem" id="/Clients/Delete/@item.id">Delete</button> 
+              
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="modalcontainer"></div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Content/DemoJavascript.js")
